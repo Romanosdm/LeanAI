@@ -217,13 +217,13 @@ theorem week6_injective_of_ker_eq_bot
     (hker : LinearMap.ker f = ⊥) :
     Function.Injective f := by
   intro x y h
-  have h1 : f (x - y) = 0 := by
+  have hsub : f (x - y) = 0 := by
     rw [f.map_sub x y, h, ← f.map_sub y y]
     simp
-  have h2 : x-y ∈ f.ker := h1
+  have hmem : x-y ∈ f.ker := hsub
   have hdiff : x - y = 0 := by
-    rw [hker] at h2
-    exact h2
+    rw [hker] at hmem
+    exact hmem
   calc
   x = (x - y) + y := by simp
   _ = (0 : V) + y := by rw [hdiff]

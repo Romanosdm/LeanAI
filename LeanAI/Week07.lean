@@ -69,7 +69,7 @@ theorem week7_sequence_continuous_comp
     (hg : Continuous g) :
     Filter.Tendsto (fun n => g (u n)) Filter.atTop (nhds (g a)) := by
   have hgy : Filter.Tendsto g (nhds a) (nhds (g a)) := by
-    exact week7_continuous_gives_limit g hg a
+    exact hg.tendsto a
   exact Filter.Tendsto.comp hgy hu
 
 theorem week7_sequence_add
